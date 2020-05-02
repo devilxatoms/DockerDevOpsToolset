@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+    jenkins:
+        image: jenkinsdvx
+        ports:
+            - 8080:8080
+        volumes:
+            - "./jenkins_home:/var/jenkins_home"
+        secrets: # secrets block only for 'web' service
+            - jenkins_user
+            - jenkins_pass
+
+secrets:
+    jenkins_user:
+        external: true
+    jenkins_pass:
+        external: true
